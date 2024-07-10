@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Dummy Blog Post 1",
+    "content": "This is the content of dummy blog post 1",
+    "isPublished": true
+  },
+  {
+    "title": "Dummy Blog Post 2",
+    "content": "This is the content of dummy blog post 2"
+  },
+  {
+    "title": "Dummy Blog Post 3",
+    "content": "This is the content of dummy blog post 3",
+    "isPublished": true
+  },
+  {
+    "title": "Dummy Blog Post 4",
+    "content": "This is the content of dummy blog post 4"
+  },
+  {
+    "title": "Dummy Blog Post 5",
+    "content": "This is the content of dummy blog post 5",
+    "isPublished": true
+  },
+  {
+    "title": "Dummy Blog Post 6",
+    "content": "This is the content of dummy blog post 6"
+  },
+  {
+    "title": "Dummy Blog Post 7",
+    "content": "This is the content of dummy blog post 7",
+    "isPublished": true
+  },
+  {
+    "title": "Dummy Blog Post 8",
+    "content": "This is the content of dummy blog post 8"
+  },
+  {
+    "title": "Dummy Blog Post 9",
+    "content": "This is the content of dummy blog post 9",
+    "isPublished": true
+  },
+  {
+    "title": "Dummy Blog Post 10",
+    "content": "This is the content of dummy blog post 10"
+  }
+]
