@@ -4,6 +4,7 @@ import Error from "./Error";
 import InitialView from "./InitialView";
 import BlogEntry from "./BlogEntry";
 import LogIn from "./LogIn";
+import CreateBlogPost from "./CreateBlogPost";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -21,8 +22,12 @@ const Router = () => {
           element: <LogIn/>
         },
         {
-          path: ":postId",
+          path: "posts/:postId",
           element: <BlogEntry/>
+        },
+        {
+          path: "createBlogPost",
+          element:<CreateBlogPost/>
         }
       ]
     },

@@ -12,7 +12,7 @@ function InitialView() {
       try {
         const response = await fetch(config.APIURL + "posts/", {
           mode: "cors",
-          method: "GET",
+          method: "GET"
         });
 
         if(!response.ok) {
@@ -47,10 +47,15 @@ function InitialView() {
       key={post._id}
       id={post._id}
     />
-  })
+  });
+
+  function newBlogPost() {
+    window.location.href = "/createBlogPost";
+  };
 
   return (
     <>
+      <button type='button' onClick={newBlogPost}>New Blog Post</button>
       {blogEntries}
     </>
   )

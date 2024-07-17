@@ -18,7 +18,7 @@ function App() {
         <h1 onClick={goHome} style={{cursor: 'pointer'}}>Blog</h1>
         {checkForToken() ? <LogoutButton /> : <LogInButton />}
       </div>
-      <div id='content'>
+      <div id='body'>
         <Outlet />
       </div>
     </>

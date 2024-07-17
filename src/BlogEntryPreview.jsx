@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function BlogEntryPreview(props) {
   function redirect() {
-    window.location.href = "/"+props.id;
+    window.location.href = "/posts/"+props.id;
   };
   return (
       <div className="blog-entry-preview" onClick={redirect}>

@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 import config from "./config";
 import Comment from "./Comment";
+import CreateComment from "./CreateComment";
+import getIdFromURL from "./getIdFromURL";
 
 function BlogEntry(){
   const [post, setPost] = useState({});
-
-  function getIdFromURL(){
-    const path = window.location.pathname;
-    const segments = path.split("/");
-    const id = segments[segments.length - 1];
-    return id;
-  }
 
   useEffect(() => {
     async function fetchData() {
@@ -62,14 +57,11 @@ function BlogEntry(){
       <h2 className="title">{post.title}</h2>
       <p className="content">{post.content}</p>
       <p className="date">{post.timestamp}</p>
-      {comments && (
         <div className="commentSection">
           <h3>Comments</h3>
           {comments}
+          <CreateComment />
         </div>
-        )
-      }
-      
     </div>
   )
 }
