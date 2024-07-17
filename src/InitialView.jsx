@@ -24,7 +24,15 @@ function InitialView() {
 
       } catch(error) {
         console.log(error)
-        setblogPosts(dummyContent);
+        setblogPosts([
+          {
+            id: "dummyID",
+            title: error.name,
+            content: error.message,
+            isPublished: true,
+            date: Date.now(),
+          }
+        ]);
         return;
       }
     };

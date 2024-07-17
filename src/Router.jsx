@@ -3,6 +3,7 @@ import App from "./App";
 import Error from "./Error";
 import InitialView from "./InitialView";
 import BlogEntry from "./BlogEntry";
+import LogIn from "./LogIn";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const Router = () => {
         {
           index: true,
           element: <InitialView/>
+        },
+        {
+          path: "login",
+          element: <LogIn/>
         },
         {
           path: ":postId",

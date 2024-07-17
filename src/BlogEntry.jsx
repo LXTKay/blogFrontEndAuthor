@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import config from "./config";
+import Comment from "./Comment";
 
 function BlogEntry(){
   const [post, setPost] = useState({});
@@ -29,16 +30,46 @@ function BlogEntry(){
 
       } catch(error) {
         console.log(error);
+        const data = {
+          id: "dummyID",
+          title: error.name,
+          content: error.message,
+          isPublished: true,
+          date: Date.now(),
+        }
+        setPost(data);
         return;
       };
     };
     fetchData();
   }, []);
+
+  let comments = null;
+  if (post.comments && post.comments.length > 0){
+    comments = post.comments.map(function(comment){
+      return <Comment 
+        key={comment._id}
+        name={comment.name} 
+        content={comment.content} 
+        timestamp={comment.timestamp}
+        id={comment._id}
+      />
+    })
+  }
+  
   return (
     <div className="blog-entry">
       <h2 className="title">{post.title}</h2>
       <p className="content">{post.content}</p>
-      <p className="date">{post.date}</p>
+      <p className="date">{post.timestamp}</p>
+      {comments && (
+        <div className="commentSection">
+          <h3>Comments</h3>
+          {comments}
+        </div>
+        )
+      }
+      
     </div>
   )
 }
