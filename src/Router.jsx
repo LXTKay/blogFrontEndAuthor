@@ -7,6 +7,7 @@ import LogIn from "./LogIn";
 import CreateBlogPost from "./CreateBlogPost";
 import EditBlogPost from "./EditBlogPost";
 import editBlogPostLoader from "./editBlogPostLoader";
+import SignUp from "./SignUp";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const Router = () => {
           path: "posts/:postId/edit",
           element: <EditBlogPost/>,
           loader: editBlogPostLoader
+        },
+        {
+          path: "signUp",
+          element: <SignUp/>
         }
       ]
     },
