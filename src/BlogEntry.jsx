@@ -3,6 +3,8 @@ import config from "./config";
 import Comment from "./Comment";
 import CreateComment from "./CreateComment";
 import getIdFromURL from "./getIdFromURL";
+import ModalDelete from "./ModalDelete";
+import getAuthCookie from "./getAuthCookie";
 
 function BlogEntry(){
   const [post, setPost] = useState({});
@@ -50,11 +52,50 @@ function BlogEntry(){
         id={comment._id}
       />
     })
+  };
+
+  function showModal(){
+    const modal = document.querySelector("#modalDelete");
+    modal.showModal();
   }
+
+  async function deleteFunction(){
+    const id = getIdFromURL();
+    const authCookie = getAuthCookie();
+    try{
+      const response = await fetch(config.APIURL + "posts/" + id, {
+        mode: "cors",
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": authCookie
+        },
+        })
+      
+      if(!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+
+      const data = await response.json();
+
+      document.querySelector(".blog-entry").innerHTML = data.message;
+    }catch(error) {
+      console.log(error);
+    };
+  };
+
+  function editPost(){
+    window.location.href = getIdFromURL() + "/edit";
+  };
   
   return (
     <div className="blog-entry">
       <h2 className="title">{post.title}</h2>
+      <div>
+        <button onClick={editPost}>Edit</button>
+        <button onClick={showModal}>Delete</button>
+        <ModalDelete deleteFunction={deleteFunction}/>
+      </div>
       <p className="content">{post.content}</p>
       <p className="date">{post.timestamp}</p>
         <div className="commentSection">

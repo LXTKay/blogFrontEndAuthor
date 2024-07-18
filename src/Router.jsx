@@ -5,6 +5,8 @@ import InitialView from "./InitialView";
 import BlogEntry from "./BlogEntry";
 import LogIn from "./LogIn";
 import CreateBlogPost from "./CreateBlogPost";
+import EditBlogPost from "./EditBlogPost";
+import editBlogPostLoader from "./editBlogPostLoader";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -28,6 +30,11 @@ const Router = () => {
         {
           path: "createBlogPost",
           element:<CreateBlogPost/>
+        },
+        {
+          path: "posts/:postId/edit",
+          element: <EditBlogPost/>,
+          loader: editBlogPostLoader
         }
       ]
     },
