@@ -5,24 +5,36 @@ import CreateComment from "./CreateComment";
 import getIdFromURL from "./getIdFromURL";
 import ModalDelete from "./ModalDelete";
 import getAuthCookie from "./getAuthCookie";
+import "./BlogEntry.css";
+import makeDatePretty from "./makeDatePretty";
+import Context from "./context";
+import { useContext } from "react";
 
 function BlogEntry(){
   const [post, setPost] = useState({});
+  const {loggedIn, setLoggedIn} = useContext(Context);
 
   useEffect(() => {
     async function fetchData() {
+      const fetchOptions = {
+        mode: "cors",
+        method: "GET"
+      };
+
+      const authCookie = getAuthCookie();
+      if(authCookie) fetchOptions.headers = { "Authorization": authCookie };
+
       const id = getIdFromURL();
       try{
-        const response = await fetch(config.APIURL + "posts/" + id, {
-          mode: "cors",
-          method: "GET",
-        });
+        const response = await fetch(config.APIURL + "posts/" + id, fetchOptions);
 
         if(!response.ok) {
           throw new Error('Failed to fetch data');
         }
 
         const data = await response.json();
+        data.timestamp = makeDatePretty(data.timestamp);
+        data.comments.map(comment => comment.timestamp = makeDatePretty(comment.timestamp));
         setPost(data);
 
       } catch(error) {
@@ -89,21 +101,24 @@ function BlogEntry(){
   };
   
   return (
-    <div className="blog-entry">
-      <h2 className="title">{post.title}</h2>
-      <div>
-        <button onClick={editPost}>Edit</button>
-        <button onClick={showModal}>Delete</button>
-        <ModalDelete deleteFunction={deleteFunction}/>
+    <>
+      <div className="blog-entry">
+        <h2 className="title">{post.title}</h2>
+        <p className="date">{post.timestamp}</p>
+        {loggedIn && (<div>
+          <button onClick={editPost}>Edit</button>
+          <button onClick={showModal}>Delete</button>
+          <ModalDelete deleteFunction={deleteFunction}/>
+        </div>)}
+        <p className="content">{post.content}</p>
       </div>
-      <p className="content">{post.content}</p>
-      <p className="date">{post.timestamp}</p>
-        <div className="commentSection">
-          <h3>Comments</h3>
-          {comments}
-          <CreateComment />
-        </div>
-    </div>
+      <div className="commentSection">
+        <h3>Comments</h3>
+        {comments}
+        <CreateComment />
+      </div>
+    </>
+    
   )
 }
 

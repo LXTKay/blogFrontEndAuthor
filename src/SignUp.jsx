@@ -1,4 +1,5 @@
 import config from "./config";
+import "./LogIn.css"
 
 export default function SignUp(){
   async function submit(){
@@ -28,18 +29,18 @@ export default function SignUp(){
     };
   };
   return (
-    <div>
+    <div className="logInForm">
       <h2>Sign Up</h2>
       <form action="#">
-        <div>
+        <div className="formGroup">
           <label htmlFor="username">Username</label>
           <input type="text" id="username" placeholder="Username"/>
         </div>
-        <div>
+        <div className="formGroup">
           <label htmlFor="password">Password</label>
           <input type="password" id="password" placeholder="Password"/>
         </div>
-        <button type="button" onClick={submit}>Submit</button>
+        <button className="logInButton" type="button" onClick={submit}>Submit</button>
       </form>
       <div id="message"></div>
     </div>

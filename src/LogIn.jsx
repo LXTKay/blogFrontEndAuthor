@@ -1,4 +1,5 @@
 import config from "./config";
+import "./LogIn.css";
 
 export default function LogIn(){
   async function submitLoginData(){
@@ -25,7 +26,7 @@ export default function LogIn(){
         return;
       }
 
-      document.cookie = `Authorization=Bearer ${data.token}; Path=/; SameSite=Strict`;
+      document.cookie = `Authorization=Bearer ${data.token}; Path=/; SameSite=Strict; Expires=${new Date(Date.now() + 60 * 60 * 2 * 1000)};`;
       window.location.href = "/";
     } catch (error) {
       console.log(error);
@@ -33,18 +34,18 @@ export default function LogIn(){
     }
   }
   return (
-    <div>
+    <div className="logInForm">
       <h2>Log In</h2>
       <form action="#">
-        <div>
+        <div className="formGroup">
           <label htmlFor="username">Username</label>
           <input type="text" id="username" placeholder="Username"/>
         </div>
-        <div>
+        <div className="formGroup">
           <label htmlFor="password">Password</label>
           <input type="password" id="password" placeholder="Password"/>
         </div>
-        <button type="button" onClick={submitLoginData}>Log In</button>
+        <button className="logInButton" type="button" onClick={submitLoginData}>Log In</button>
       </form>
       <div id="message"></div>
     </div>

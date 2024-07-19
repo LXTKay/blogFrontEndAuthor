@@ -16,9 +16,20 @@
 
 .content {
   padding: 1rem;
+  white-space: pre-wrap;
+  margin: 0;
 
 }
 
 .date {
   font-style: italic;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 650px) {
+  .blog-entry-preview {
+    width: calc(100% - 2rem);
+  }
+  
 }

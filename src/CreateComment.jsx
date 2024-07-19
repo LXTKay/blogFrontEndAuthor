@@ -1,12 +1,13 @@
 import getIdFromURL from "./getIdFromURL";
 import config from "./config";
+import "./CreateComment.css";
 
 export default function CreateComment() {
   async function submitComment() {
     try{
       const id = getIdFromURL();
       const name = document.querySelector("input[name=commentName]").value;
-      const content = document.querySelector("input[name=commentContent]").value;
+      const content = document.querySelector("textarea[name=commentContent]").value;
 
       const response = await fetch(config.APIURL + "comments/", {
         mode: "cors",
@@ -36,11 +37,11 @@ export default function CreateComment() {
 
   return (
     <div>
-      <form action="#">
+      <form className="createComment" action="#">
         <h4>Create a new comment</h4>
-        <input type="text" name="commentName" placeholder="Your name" />
-        <input type="text" name="commentContent" placeholder="Your Comment" />
-        <button type="button" onClick={submitComment}>Submit</button>
+        <input className="createCommentName" type="text" name="commentName" placeholder="Your name" />
+        <textarea className="createCommentContent" type="text" name="commentContent" placeholder="Your Comment" />
+        <button className="createCommentButton" type="button" onClick={submitComment}>Submit</button>
       </form>
       <div id="message"></div>
     </div>

@@ -1,6 +1,6 @@
 import getAuthCookie from "./getAuthCookie";
 import config from "./config";
-import { redirect } from "react-router-dom";
+import "./CreateBlogPost.css";
 
 export default function CreateBlogPost() {
   async function submitPost(){
@@ -39,14 +39,14 @@ export default function CreateBlogPost() {
     
   }
   return (
-    <form action="#">
-      <div>
+    <form className="blogPostForm" action="#">
+      <div class="form-group">
         <label htmlFor="title">Title:</label>
-        <input type="text" name="title" id="title" />
-      </div>
-      <div>
+        <input className="create-title"type="text" name="title" id="title" />
+      </div >
+      <div class="form-group">
         <label htmlFor="content">Body:</label>
-        <textarea name="content" id="content"></textarea>
+        <textarea className="create-content" name="content" id="content"></textarea>
       </div>
       <div>
         <label htmlFor="isPublished">Publish:</label>
