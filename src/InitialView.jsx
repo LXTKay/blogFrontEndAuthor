@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from 'react';
 import BlogEntryPreview from './BlogEntryPreview';
 import config from './config';
-import './App.css'
-import makeDatePretty from "./makeDatePretty";
-import getAuthCookie from './getAuthCookie';
-import Context from './context';
+import './styles/App.css'
+import makeDatePretty from "./modules/makeDatePretty";
+import getAuthCookie from './modules/getAuthCookie';
+import Context from './modules/context';
 
 function InitialView() {
   const [blogPosts, setblogPosts] = useState([]);
@@ -44,7 +44,7 @@ function InitialView() {
         ]);
         return;
       }
-    };
+    }
     fetchData();
   }, []);
 
@@ -60,7 +60,7 @@ function InitialView() {
 
   function newBlogPost() {
     window.location.href = "/createBlogPost";
-  };
+  }
 
   return (
     <>

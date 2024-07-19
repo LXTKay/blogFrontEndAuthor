@@ -6,7 +6,7 @@ import BlogEntry from "./BlogEntry";
 import LogIn from "./LogIn";
 import CreateBlogPost from "./CreateBlogPost";
 import EditBlogPost from "./EditBlogPost";
-import editBlogPostLoader from "./editBlogPostLoader";
+import editBlogPostLoader from "./modules/editBlogPostLoader";
 import SignUp from "./SignUp";
 
 const Router = () => {

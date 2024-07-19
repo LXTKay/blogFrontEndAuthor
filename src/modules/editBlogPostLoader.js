@@ -1,6 +1,6 @@
 "use strict";
 
-import config from "./config.js";
+import config from "../config.js";
 import getAuthCookie from "./getAuthCookie.js";
 
 export default async function editBlogPostLoader({ params }) {
@@ -21,5 +21,5 @@ export default async function editBlogPostLoader({ params }) {
   }catch(error){
     console.log(error);
     return { message: error.name + error.message };
-  };
-};
+  }
+}

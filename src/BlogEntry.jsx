@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import config from "./config";
 import Comment from "./Comment";
 import CreateComment from "./CreateComment";
-import getIdFromURL from "./getIdFromURL";
+import getIdFromURL from "./modules/getIdFromURL";
 import ModalDelete from "./ModalDelete";
-import getAuthCookie from "./getAuthCookie";
-import "./BlogEntry.css";
-import makeDatePretty from "./makeDatePretty";
-import Context from "./context";
+import getAuthCookie from "./modules/getAuthCookie";
+import "./styles/BlogEntry.css";
+import makeDatePretty from "./modules/makeDatePretty";
+import Context from "./modules/context";
 import { useContext } from "react";
 
 function BlogEntry(){
@@ -33,6 +33,7 @@ function BlogEntry(){
         }
 
         const data = await response.json();
+        if(data.message) throw new Error(data.message);
         data.timestamp = makeDatePretty(data.timestamp);
         data.comments.map(comment => comment.timestamp = makeDatePretty(comment.timestamp));
         setPost(data);
@@ -48,13 +49,13 @@ function BlogEntry(){
         }
         setPost(data);
         return;
-      };
-    };
+      }
+    }
     fetchData();
   }, []);
 
   let comments = null;
-  if (post.comments && post.comments.length > 0){
+  if (post.comments && (post.comments.length > 0)){
     comments = post.comments.map(function(comment){
       return <Comment 
         key={comment._id}
@@ -64,7 +65,7 @@ function BlogEntry(){
         id={comment._id}
       />
     })
-  };
+  }
 
   function showModal(){
     const modal = document.querySelector("#modalDelete");
@@ -93,12 +94,12 @@ function BlogEntry(){
       document.querySelector(".blog-entry").innerHTML = data.message;
     }catch(error) {
       console.log(error);
-    };
-  };
+    }
+  }
 
   function editPost(){
     window.location.href = getIdFromURL() + "/edit";
-  };
+  }
   
   return (
     <>

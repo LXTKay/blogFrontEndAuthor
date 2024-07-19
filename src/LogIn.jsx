@@ -1,5 +1,5 @@
 import config from "./config";
-import "./LogIn.css";
+import "./styles/LogIn.css";
 
 export default function LogIn(){
   async function submitLoginData(){
@@ -50,4 +50,4 @@ export default function LogIn(){
       <div id="message"></div>
     </div>
   );
-};
+}

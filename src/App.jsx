@@ -1,21 +1,21 @@
 import { Outlet } from 'react-router-dom';
-import './App.css'
+import './styles/App.css'
 import LogInButton from './LogInButton';
 import LogoutButton from './LogOutButton';
 import SignUpButton from './SignUpButton';
-import Context from './context';
+import Context from './modules/context';
 import { useEffect, useState } from 'react';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   function goHome(){
     window.location.href = '/';
-  };
+  }
   function checkForToken(){
     let cookies = document.cookie;
     if(cookies.includes("Authorization") && cookies.includes("Bearer")) return true;
     return false;      
-  };
+  }
 
   useEffect(() => {
     setLoggedIn(checkForToken());

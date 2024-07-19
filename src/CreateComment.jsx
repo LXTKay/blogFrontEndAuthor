@@ -1,6 +1,6 @@
-import getIdFromURL from "./getIdFromURL";
+import getIdFromURL from "./modules/getIdFromURL";
 import config from "./config";
-import "./CreateComment.css";
+import "./styles/CreateComment.css";
 
 export default function CreateComment() {
   async function submitComment() {

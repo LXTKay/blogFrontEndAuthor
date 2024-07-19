@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import getAuthCookie from "./getAuthCookie";
+import getAuthCookie from "./modules/getAuthCookie";
 import config from "./config";
 
 export default function EditBlogPost() {
@@ -41,7 +41,7 @@ export default function EditBlogPost() {
       document.getElementById("message").innerText = error.message || data.message;
       return;
     }
-  };
+  }
   
   return (
     <form action="#">
@@ -61,4 +61,4 @@ export default function EditBlogPost() {
     <div id="message"></div>
   </form>
   );
-};
+}

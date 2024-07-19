@@ -1,6 +1,6 @@
-import getAuthCookie from "./getAuthCookie";
+import getAuthCookie from "./modules/getAuthCookie";
 import config from "./config";
-import "./CreateBlogPost.css";
+import "./styles/CreateBlogPost.css";
 
 export default function CreateBlogPost() {
   async function submitPost(){
@@ -40,11 +40,11 @@ export default function CreateBlogPost() {
   }
   return (
     <form className="blogPostForm" action="#">
-      <div class="form-group">
+      <div className="form-group">
         <label htmlFor="title">Title:</label>
         <input className="create-title"type="text" name="title" id="title" />
       </div >
-      <div class="form-group">
+      <div className="form-group">
         <label htmlFor="content">Body:</label>
         <textarea className="create-content" name="content" id="content"></textarea>
       </div>

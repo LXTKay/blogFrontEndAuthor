@@ -1,5 +1,5 @@
 import config from "./config";
-import "./LogIn.css"
+import "./styles/LogIn.css"
 
 export default function SignUp(){
   async function submit(){
@@ -26,8 +26,8 @@ export default function SignUp(){
       document.querySelector("#message").innerHTML = data.message;
     }catch(error){
       document.querySelector("#message").innerHTML = error.message;
-    };
-  };
+    }
+  }
   return (
     <div className="logInForm">
       <h2>Sign Up</h2>
@@ -45,4 +45,4 @@ export default function SignUp(){
       <div id="message"></div>
     </div>
   );
-};
+}

@@ -1,7 +1,7 @@
 import config from "./config";
-import getAuthCookie from "./getAuthCookie";
-import "./Comment.css";
-import Context from "./context";
+import getAuthCookie from "./modules/getAuthCookie";
+import "./styles/Comment.css";
+import Context from "./modules/context";
 import { useContext } from "react";
 
 export default function Comment(props) {
@@ -25,7 +25,7 @@ export default function Comment(props) {
     }catch(error) {
       document.getElementById(id).innerHTML = error.message;
     }
-  };
+  }
   return (
     <div className="comment" id={props.id}>
       <div className="commentTopBar">
@@ -36,4 +36,4 @@ export default function Comment(props) {
       <p className="commentContent">{props.content}</p>
     </div>
   );
-};
+}
