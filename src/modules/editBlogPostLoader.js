@@ -5,13 +5,18 @@ import getAuthCookie from "./getAuthCookie.js";
 
 export default async function editBlogPostLoader({ params }) {
   try{
-    if(!getAuthCookie()) throw new Error('Not authorized');
+    const authCookie = getAuthCookie();
+    if(!authCookie) throw new Error('Not authorized');
 
     const id = params.postId;
-    const response = await fetch(config.APIURL + "posts/" + id, {
+    const fetchOptions = {
       mode: "cors",
-      method: "GET",
-    });
+      method: "GET"
+    };
+    
+    fetchOptions.headers = { "Authorization": authCookie };
+
+    const response = await fetch(config.APIURL + "posts/" + id, fetchOptions);
 
     if(!response.ok) throw new Error('Failed to fetch data');
 

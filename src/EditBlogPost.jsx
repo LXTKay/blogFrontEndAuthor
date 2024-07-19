@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import getAuthCookie from "./modules/getAuthCookie";
 import config from "./config";
+import "./styles/CreateBlogPost.css";
 
 export default function EditBlogPost() {
   const loaderData = useLoaderData();
@@ -44,21 +45,21 @@ export default function EditBlogPost() {
   }
   
   return (
-    <form action="#">
-    <div>
-      <label htmlFor="title">Title:</label>
-      <input type="text" name="title" id="title" defaultValue={loaderData.title}/>
-    </div>
-    <div>
-      <label htmlFor="content">Body:</label>
-      <textarea name="content" id="content" defaultValue={loaderData.content}></textarea>
-    </div>
-    <div>
-      <label htmlFor="isPublished">Publish:</label>
-      <input type="checkbox" name="isPublished" id="isPublished" />
-    </div>
-    <button type="button" onClick={submitChange}>Submit</button>
-    <div id="message"></div>
-  </form>
+    <form className="blogPostForm" action="#">
+      <div className="form-group">
+        <label htmlFor="title">Title:</label>
+        <input className="create-title" type="text" name="title" id="title" defaultValue={loaderData.title}/>
+      </div>
+      <div className="form-group">
+        <label htmlFor="content">Body:</label>
+        <textarea className="create-content" name="content" id="content" defaultValue={loaderData.content}></textarea>
+      </div>
+      <div>
+        <label htmlFor="isPublished">Publish:</label>
+        <input type="checkbox" name="isPublished" id="isPublished" />
+      </div>
+      <button type="button" onClick={submitChange}>Submit</button>
+      <div id="message"></div>
+    </form>
   );
 }

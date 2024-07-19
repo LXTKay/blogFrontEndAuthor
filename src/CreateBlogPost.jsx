@@ -42,7 +42,7 @@ export default function CreateBlogPost() {
     <form className="blogPostForm" action="#">
       <div className="form-group">
         <label htmlFor="title">Title:</label>
-        <input className="create-title"type="text" name="title" id="title" />
+        <input className="create-title" type="text" name="title" id="title" />
       </div >
       <div className="form-group">
         <label htmlFor="content">Body:</label>
