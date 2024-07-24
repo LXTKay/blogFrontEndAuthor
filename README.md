@@ -9,3 +9,7 @@ https://github.com/LXTKay/blogFrontEndReader - Front end for readers only
 https://github.com/LXTKay/blogFrontEndAuthor - Front end for authors
 
 https://github.com/LXTKay/blogBackEnd - Backend for readers and authors
+
+## Deployed Website
+
+https://astounding-syrniki-fb1750.netlify.app/
